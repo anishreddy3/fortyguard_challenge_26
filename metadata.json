@@ -1,0 +1,1 @@
+{"name":"FormaGuard - Autonomous Urban Heat Mitigation","description":"Autonomous heat-mitigation extension for Autodesk Forma powered by LangGraph multi-agent orchestration, microclimate thermal sensing, and generative 3D canopy geometry.","requestFramePermissions":[],"majorCapabilities":["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]}

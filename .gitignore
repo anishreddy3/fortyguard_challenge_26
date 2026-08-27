@@ -11,6 +11,10 @@ __pycache__/
 build/
 develop-eggs/
 dist/
+node_modules/
+.env
+.env.local
+.env.*.local
 downloads/
 eggs/
 .eggs/

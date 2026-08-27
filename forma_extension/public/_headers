@@ -1,0 +1,6 @@
+/*
+  X-Frame-Options: ALLOW-FROM https://app.autodeskforma.com
+  Content-Security-Policy: frame-ancestors 'self' https://*.autodeskforma.com https://*.autodeskforma.eu https://app.autodeskforma.com;
+  Access-Control-Allow-Origin: *
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
