@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "gen-lang-client-0716217362",
+    "site": "formaguard-studio",
     "public": "dist",
     "ignore": [
       "firebase.json",
