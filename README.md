@@ -2,6 +2,8 @@
 
 A Python + Jupyter sandbox for the [FortyGuard tOS Enterprise API](https://api.fortyguard.com). Drop in your API key and run a notebook — you'll get a heatmap, a heat-intelligence PDF, or an environmental-parameter time series in minutes.
 
+> **Deploy FormaGuard?** The Autodesk Forma extension ships to **Cloudflare Pages**; the FastAPI agent ships to **Google Cloud Run** behind **Firebase Hosting** (`/api/**` rewrites). See **[DEPLOY.md](DEPLOY.md)**.
+
 > **Starting a hackathon project?** Click **Use this template → Create a new repository** (green button, top of this page) to spin up your own copy to work in, then follow [Getting started](#getting-started) below.
 
 The `fortyguard/` package wraps every endpoint the API exposes and handles the submit-then-poll pattern for you. The `notebooks/` folder walks you through each endpoint with runnable examples, and `notebooks/use_cases/` shows full narrative workflows that combine your own data with FortyGuard layers to produce a defensible action list.

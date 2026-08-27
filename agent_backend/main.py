@@ -38,12 +38,12 @@ app = FastAPI(
 
 # -----------------------------------------------------------------------------
 # Explicit CORS Middleware Configuration
-# Configured specifically for Cloudflare Pages (*.pages.dev) and Autodesk Forma
+# Exact origins from ALLOWED_ORIGINS; regex covers Pages / Forma / Firebase hosts
 # -----------------------------------------------------------------------------
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.ALLOWED_ORIGINS,
-    allow_origin_regex=r"https://.*\.pages\.dev|https://.*\.autodeskforma\.(com|eu)",
+    allow_origin_regex=settings.CORS_ORIGIN_REGEX,
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
     allow_headers=["*"],

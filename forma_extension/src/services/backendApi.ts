@@ -1,17 +1,36 @@
 /**
  * Backend API Client for FormaGuard Extension.
  *
- * Connects the Cloudflare Pages frontend to the Google Cloud Run / FastAPI backend.
+ * Connects the Cloudflare Pages frontend to the Firebase Hosting → Cloud Run
+ * API (or a direct Cloud Run URL) via VITE_AGENT_BACKEND_URL.
  */
 
 import { FormaBoundingBox, MitigationResponse } from '../types/forma';
 
-// Base URL configured via Cloudflare Pages environment variables or fallback
-const BACKEND_BASE_URL =
-  (import.meta as any).env?.VITE_AGENT_BACKEND_URL ||
-  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    ? 'http://localhost:8080'
-    : window.location.origin);
+function resolveBackendBaseUrl(): string {
+  const configured = (import.meta as ImportMeta & { env?: Record<string, string> }).env
+    ?.VITE_AGENT_BACKEND_URL;
+
+  if (configured && configured.trim().length > 0) {
+    return configured.replace(/\/$/, '');
+  }
+
+  const hostname = window.location.hostname;
+  if (hostname === 'localhost' || hostname === '127.0.0.1') {
+    return 'http://localhost:8080';
+  }
+
+  // Production builds must set VITE_AGENT_BACKEND_URL at build time.
+  // Falling back to same-origin only works if this host rewrites /api → Cloud Run.
+  console.warn(
+    '[FormaGuard] VITE_AGENT_BACKEND_URL is unset; using window.location.origin. ' +
+      'Set it to your Firebase Hosting or Cloud Run URL before deploying to Pages.'
+  );
+  return window.location.origin;
+}
+
+const BACKEND_BASE_URL = resolveBackendBaseUrl();
+
 
 /**
  * Triggers the LangGraph multi-agent heat-mitigation workflow.

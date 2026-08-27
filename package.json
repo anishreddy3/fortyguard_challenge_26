@@ -11,7 +11,10 @@
     "lint": "tsc --noEmit",
     "forma:dev": "npm --prefix forma_extension run dev",
     "forma:build": "npm --prefix forma_extension run build",
-    "backend:dev": "uvicorn agent_backend.main:app --host 0.0.0.0 --port 8080 --reload"
+    "forma:deploy": "npm --prefix forma_extension run deploy:pages",
+    "backend:dev": "uvicorn agent_backend.main:app --host 0.0.0.0 --port 8080 --reload",
+    "backend:deploy": "gcloud builds submit --config cloudbuild.yaml",
+    "firebase:deploy": "npm run build && npx firebase-tools deploy --only hosting"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

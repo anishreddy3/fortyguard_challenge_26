@@ -2,6 +2,8 @@ name = "formaguard"
 compatibility_date = "2024-03-01"
 pages_build_output_dir = "dist"
 
+# Runtime bindings for Pages Functions only (this app is a static SPA).
+# VITE_* must be set as Cloudflare Pages *build* environment variables
+# (or in .env.production) so Vite can inline them at compile time.
 [vars]
 ENVIRONMENT = "production"
-VITE_AGENT_BACKEND_URL = "https://formaguard-backend-rflakpgoqd-de.a.run.app"

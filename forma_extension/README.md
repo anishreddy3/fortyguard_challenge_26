@@ -1,34 +1,60 @@
 # FormaGuard Extension (Cloudflare Pages Frontend)
 
-Frontend extension panel for **Autodesk Forma**, designed to run inside the Forma embedded iframe.
+Frontend extension panel for **Autodesk Forma**, designed to run inside the Forma embedded iframe and talk to the Firebase Hosting → Cloud Run backend.
 
 ---
 
-## 🛠️ Features
+## Features
 
 - **Forma Embedded SDK Integration**: Extracts current 3D canvas coordinates (`getFormaCanvasBoundingBox`), proposal bounds, and camera views.
 - **Agent Copilot Chat**: Connects to the LangGraph multi-agent backend to trigger thermal risk assessments and view agent thought steps.
 - **Forma Geometry Actuator**: Pushes generated 3D trees (`vegetation_tree`), tensile shade sails (`shade_structure`), and high-albedo pavements (`surface_albedo_layer`) directly onto the active Forma proposal.
-- **Optimized for Cloudflare Pages**: Pre-configured headers for iframe embedding (`frame-ancestors https://app.autodeskforma.com`), SPA routing `_routes.json`, and `wrangler.toml`.
+- **Cloudflare Pages**: `_headers` (CSP `frame-ancestors` for Forma), SPA `_redirects` / `_routes.json`, and `wrangler.toml`.
 
 ---
 
-## 🌐 Deploy to Cloudflare Pages
+## Environment (build-time)
 
-### 1. Build and Deploy via Cloudflare Wrangler CLI
+Vite inlines `VITE_*` at **build** time. Set the backend URL before building:
 
 ```bash
-# Install dependencies
-npm install
-
-# Build static assets for production
-npm run build
-
-# Deploy to Cloudflare Pages
-npx wrangler pages deploy dist --project-name formaguard
+cp .env.production.example .env.production
+# Edit VITE_AGENT_BACKEND_URL → https://YOUR_FIREBASE_PROJECT_ID.web.app
+#                            or → https://formaguard-backend-….run.app
 ```
 
-### 2. Register Extension in Autodesk Forma Developer Portal
+For Cloudflare dashboard / CI builds, add **Build environment variable**:
+
+| Name | Example |
+|------|---------|
+| `VITE_AGENT_BACKEND_URL` | `https://YOUR_FIREBASE_PROJECT_ID.web.app` |
+
+Do **not** put `VITE_AGENT_BACKEND_URL` only in `wrangler.toml` `[vars]` — that is runtime-only and will not reach the static JS bundle.
+
+---
+
+## Deploy to Cloudflare Pages
+
+### CLI (Wrangler)
+
+```bash
+npm install
+cp .env.production.example .env.production   # set VITE_AGENT_BACKEND_URL
+npm run deploy:pages
+```
+
+### Cloudflare dashboard (Git)
+
+| Setting | Value |
+|---------|--------|
+| Root directory | `forma_extension` |
+| Build command | `npm run build` |
+| Build output | `dist` |
+| Env var | `VITE_AGENT_BACKEND_URL` = Firebase Hosting or Cloud Run URL |
+
+---
+
+## Register Extension in Autodesk Forma
 
 1. Log in to [Autodesk Forma](https://app.autodeskforma.com).
 2. Go to **Extensions & Integrations** → **Developer Tools** → **Add Custom Extension**.
