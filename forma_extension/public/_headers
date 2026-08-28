@@ -1,5 +1,5 @@
 /*
-  Content-Security-Policy: frame-ancestors 'self' https://*.autodeskforma.com https://*.autodeskforma.eu https://app.autodeskforma.com;
+  Content-Security-Policy: frame-ancestors 'self' https://*.autodesk.com https://*.autodeskforma.com https://*.autodeskforma.eu https://*.autodesk.com.au https://forma.aus.autodesk.com https://app.autodeskforma.com https://*.autodeskforma.com.au;
   Access-Control-Allow-Origin: *
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
