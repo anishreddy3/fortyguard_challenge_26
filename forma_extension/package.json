@@ -10,6 +10,7 @@
     "deploy:pages": "npm run build && wrangler pages deploy dist --project-name formaguard"
   },
   "dependencies": {
+    "forma-embedded-view-sdk": "^0.94.0",
     "lucide-react": "^0.475.0",
     "motion": "^12.4.7",
     "react": "^19.0.0",
