@@ -260,3 +260,4 @@ data/street_view/*
 data/env_params/*
 !data/env_params/env_params_parcel_*.json
 .npm-cache/
+!data/simulations/**

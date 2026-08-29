@@ -1,0 +1,78 @@
+{
+  "metadata": {
+    "timezone": "GMT+7",
+    "timezone_offset_hours": 7,
+    "time_range": {
+      "start": "2026-08-15T13:00:00+07:00",
+      "end": "2026-08-15T13:00:00+07:00",
+      "interval": "1h",
+      "count": 1
+    },
+    "timestamps": [
+      "2026-08-15T13:00:00+07:00"
+    ]
+  },
+  "locations": [
+    {
+      "lat": 1.3483,
+      "lon": 103.6831,
+      "elevation": 38.0,
+      "temperature": 34.2,
+      "parameters": {
+        "heat_index_celsius": [
+          39.9
+        ],
+        "apparent_temperature_celsius": [
+          38.2
+        ],
+        "relative_humidity_percent": [
+          53.2
+        ],
+        "precipitation_mm": [
+          0.0
+        ],
+        "cloud_cover_octas": [
+          43.0
+        ],
+        "wet_bulb_temperature_celsius": [
+          25.6
+        ],
+        "air_quality:idx": [
+          84.6
+        ],
+        "air_quality_pm2p5:idx": [
+          84.6
+        ],
+        "air_quality_pm10:idx": [
+          28.3
+        ],
+        "air_quality_no2:idx": [
+          14.0
+        ],
+        "aqi_us_co": [
+          5.7
+        ],
+        "air_quality_o3:idx": [
+          35.5
+        ],
+        "air_quality_so2:idx": [
+          8.6
+        ],
+        "methane_ppb": [
+          2082.5
+        ],
+        "co2_ppm": [
+          452.0
+        ]
+      },
+      "solar_irradiance": {
+        "clear_sky": {
+          "ghi": 904.07,
+          "dni": 766.63,
+          "dhi": 173.87
+        },
+        "description": "The above values provide insights into the solar energy available at the specific location at 2026-08-15 13:00. GHI represents the total solar energy, DNI focuses on direct sunlight, and DHI accounts for scattered and diffuse radiation."
+      }
+    }
+  ]
+}
