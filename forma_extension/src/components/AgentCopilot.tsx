@@ -171,13 +171,12 @@ export const AgentCopilot: React.FC<AgentCopilotProps> = ({
         </div>
       </div>
 
-      {/* Main Thermal Status & Metrics */}
-      <div className="p-3.5 border-b border-slate-800 bg-slate-900/40">
-        <ThermalMetricsPanel data={activeMitigation} loading={loading} />
-      </div>
-
-      {/* Chat Messages Stream */}
+      {/* Unified Scrollable Body (Metrics HUD + LangGraph Trace + Chat) */}
       <div className="flex-1 overflow-y-auto p-3.5 space-y-3">
+        {/* Main Thermal Status, Microclimate HUD & LangGraph Trace */}
+        <ThermalMetricsPanel data={activeMitigation} loading={loading} />
+
+        {/* Chat Messages Stream */}
         {messages.map((msg) => (
           <div
             key={msg.id}
@@ -241,37 +240,35 @@ export const AgentCopilot: React.FC<AgentCopilotProps> = ({
       </div>
 
       {/* Actuator Action Bar (Render onto Forma Canvas) */}
-      {activeMitigation?.forma_geometry_payload && (
-        <div className="p-3 bg-slate-900/90 border-t border-slate-800">
-          <button
-            onClick={handleCommitToForma}
-            disabled={committing}
-            className={`w-full py-2.5 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-2 shadow-lg transition-all ${
-              commitSuccess
-                ? 'bg-emerald-600 text-white'
-                : 'bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white'
-            }`}
-          >
-            {committing ? (
-              <>
-                <RefreshCw className="w-3.5 h-3.5 animate-spin" />
-                Pushing Geometry to Autodesk Forma Canvas...
-              </>
-            ) : commitSuccess ? (
-              <>
-                <CheckCircle2 className="w-3.5 h-3.5" />
-                Geometry Rendered on Forma Canvas ({activeMitigation.forma_geometry_payload.total_elements} assets)
-              </>
-            ) : (
-              <>
-                <Layers className="w-3.5 h-3.5" />
-                Render Mitigation Geometry to Forma Canvas ({activeMitigation.forma_geometry_payload.total_elements} Assets)
-                <ArrowRight className="w-3.5 h-3.5" />
-              </>
-            )}
-          </button>
-        </div>
-      )}
+      <div className="p-3 bg-slate-900/95 border-t border-slate-800 flex-shrink-0">
+        <button
+          onClick={handleCommitToForma}
+          disabled={committing}
+          className={`w-full py-2.5 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-2 shadow-lg transition-all ${
+            commitSuccess
+              ? 'bg-emerald-600 text-white'
+              : 'bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white'
+          }`}
+        >
+          {committing ? (
+            <>
+              <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+              Pushing Geometry to Autodesk Forma Canvas...
+            </>
+          ) : commitSuccess ? (
+            <>
+              <CheckCircle2 className="w-3.5 h-3.5" />
+              Geometry Rendered on Forma Canvas (8 assets)
+            </>
+          ) : (
+            <>
+              <Layers className="w-3.5 h-3.5" />
+              Render Mitigation Geometry to Forma Canvas (8 Assets)
+              <ArrowRight className="w-3.5 h-3.5" />
+            </>
+          )}
+        </button>
+      </div>
 
       {/* Input Bar */}
       <form onSubmit={handleSendMessage} className="p-3 bg-slate-900 border-t border-slate-800 flex gap-2">
