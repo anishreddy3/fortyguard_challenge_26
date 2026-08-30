@@ -46,9 +46,32 @@ export const AgentCopilot: React.FC<AgentCopilotProps> = ({
 
   const [inputPrompt, setInputPrompt] = useState('');
   const [loading, setLoading] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
   const [activeMitigation, setActiveMitigation] = useState<MitigationResponse | null>(null);
   const [committing, setCommitting] = useState(false);
   const [commitSuccess, setCommitSuccess] = useState(false);
+
+  const handleRefresh = async () => {
+    setRefreshing(true);
+    try {
+      await onRefreshBbox();
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: `refresh-${Date.now()}`,
+          role: 'system',
+          content: '🔄 Synchronized 3D canvas bounding box and FortyGuard 2m microclimate parameters.',
+          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        },
+      ]);
+      // Also run autonomous mitigation to refresh all outputs
+      await handleSendMessage();
+    } catch (err: any) {
+      console.warn('Refresh error:', err);
+    } finally {
+      setRefreshing(false);
+    }
+  };
 
   const handleSendMessage = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
@@ -150,11 +173,12 @@ export const AgentCopilot: React.FC<AgentCopilotProps> = ({
             </div>
           </div>
           <button
-            onClick={onRefreshBbox}
-            title="Re-extract 3D Bounding Box from Forma Canvas"
-            className="p-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors"
+            onClick={handleRefresh}
+            disabled={refreshing || loading}
+            title="Re-extract 3D Bounding Box and Re-run FortyGuard Analysis"
+            className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors disabled:opacity-50"
           >
-            <RefreshCw className="w-3.5 h-3.5" />
+            <RefreshCw className={`w-3.5 h-3.5 ${refreshing || loading ? 'animate-spin text-emerald-400' : ''}`} />
           </button>
         </div>
 
