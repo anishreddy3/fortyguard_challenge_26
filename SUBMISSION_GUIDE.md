@@ -28,19 +28,19 @@ By embedding a 4-stage **LangGraph multi-agent loop** inside Autodesk Forma, For
 
 ## 📊 FortyGuard API Utilization & Multi-City Benchmark Suite
 
-FormaGuard has executed real, live async simulations across **5 global urban archetypes** consuming **228,880 credits** ($\approx 11.44\%$ of the 2,000,000 hackathon quota), verifying robust integration across all 5 endpoint modalities:
+FormaGuard has executed real, live async simulations across **10 global urban archetypes** (Singapore, Dubai, Manhattan NYC, Phoenix AZ, London UK, Tokyo, Madrid, Riyadh, Sydney, Los Angeles) consuming **365,080 credits** ($\approx 18.25\%$ of the 2,000,000 hackathon quota), verifying extensive integration across all 5 endpoint modalities:
 
 ```
 ┌──────────────────────────────────────┬────────────┬──────────────────┬──────────────┐
 │ FortyGuard API Endpoint              │ Call Count │ Credits Consumed │ % of Usage   │
 ├──────────────────────────────────────┼────────────┼──────────────────┼──────────────┤
-│ 🛰️ Tile Satellite Segmentation       │ 6 calls    │ 86,400 credits   │ 4.32%        │
-│ 🌡️ Heatmap Generation (tcm + exc.)   │ 14 calls   │ 59,080 credits   │ 2.95%        │
-│ 🚶 Streetview Pedestrian SVF         │ 6 calls    │ 51,600 credits   │ 2.58%        │
-│ 🔬 Environment Parameter Analysis    │ 8 calls    │ 23,200 credits   │ 1.16%        │
+│ 🛰️ Tile Satellite Segmentation       │ 10 calls   │ 144,000 credits  │ 7.20%        │
+│ 🚶 Streetview Pedestrian SVF         │ 11 calls   │ 94,600 credits   │ 4.73%        │
+│ 🌡️ Heatmap Generation (tcm + exc.)   │ 19 calls   │ 80,180 credits   │ 4.01%        │
+│ 🔬 Environment Parameter Analysis    │ 13 calls   │ 37,700 credits   │ 1.88%        │
 │ 📄 Heat Intelligence Audit Report    │ 1 call     │ 8,600 credits    │ 0.43%        │
 ├──────────────────────────────────────┼────────────┼──────────────────┼──────────────┤
-│ TOTAL UTILIZED                       │ 35 calls   │ 228,880 credits  │ 11.44%       │
+│ TOTAL UTILIZED                       │ 54 calls   │ 365,080 credits  │ 18.25%       │
 └──────────────────────────────────────┴────────────┴──────────────────┴──────────────┘
 ```
 
