@@ -116,50 +116,51 @@ The backend executes a stateful, cyclical LangGraph state machine:
 ---
 
 ### [0:00 - 0:35] The Hook & The Problem
+> **Action**: Show Autodesk Forma 3D Canvas with Jurong Eco-Garden, Singapore ([`https://forma.aus.autodesk.com`](https://forma.aus.autodesk.com)).  
 > **Narration**:  
-> *"Modern cities face an unprecedented heat crisis. Urban Heat Islands make urban corridors up to 10 degrees hotter than surrounding areas—spiking building energy loads, failing OSHA thermal safety standards, and rendering public spaces unusable.*  
-> *Historically, architects using BIM tools like Autodesk Forma have had zero real-time microclimate intelligence during early-stage massing. Thermal analysis was an afterthought performed weeks later.*  
+> *"Modern cities face an unprecedented heat crisis. Urban Heat Islands make urban corridors up to 10°C hotter than surrounding areas—spiking building energy loads, failing OSHA thermal safety standards, and rendering public spaces unusable.*  
+> *Historically, architects using BIM tools like Autodesk Forma had zero real-time microclimate intelligence during early-stage massing. Thermal analysis was an afterthought performed weeks later.*  
 > *Today, we introduce **FormaGuard**—an autonomous heat-mitigation AI agent that brings FortyGuard's hyperlocal microclimate data directly into Autodesk Forma's 3D generative engine."*
 
 ---
 
-### [0:35 - 1:20] Live Demonstration: Sensed Baseline & The Copilot
-> **Action**: Open [**`https://formaguard-studio.web.app`**](https://formaguard-studio.web.app).  
+### [0:35 - 1:15] Live Sensed Baseline Microclimate HUD
+> **Action**: Click the **FormaGuard Heat Copilot** icon in Autodesk Forma to open the panel. Highlight the **FortyGuard Microclimate HUD**.  
 > **Narration**:  
-> *"Here in the FormaGuard Studio, we are looking at an urban precinct in Dubai.  
-> Notice our Microclimate HUD on the top-right: FormaGuard has ingested FortyGuard's dense 2-meter microclimate data. The baseline temperature is an extreme 41.2°C, solar radiation is 685 Watts per square meter, and Mean Radiant Temperature is a staggering 46.4°C.  
-> Looking at the land cover breakdown from FortyGuard's satellite segmentation API, 46% of the ground is unshaded asphalt, and canopy coverage is a mere 5.5%."*
+> *"Inside Autodesk Forma, FormaGuard immediately extracts the active 3D bounding box coordinates of our site.*  
+> *Notice our Microclimate HUD: FormaGuard has ingested FortyGuard's dense 2-meter microclimate data. The baseline ambient temperature is 40.2°C, solar radiation is 685 Watts per square meter, humidity is 36%, and Sky View Factor is 0.78.*  
+> *Looking at FortyGuard's satellite land-cover bar, 88.5% of the precinct is impervious asphalt and low-albedo building roofs, while canopy coverage is a mere 3.8%."*
 
 ---
 
-### [1:20 - 2:05] Autonomous Execution: The LangGraph Multi-Agent Loop
-> **Action**: Click the **`⚡ Run LangGraph Copilot`** button. Switch to the **`LangGraph Loop`** tab to show the live execution trace.  
+### [1:15 - 2:00] Autonomous LangGraph Multi-Agent Loop
+> **Action**: Expand the **`⚡ LangGraph Multi-Agent Execution Trace`** card inside the extension panel to show the 4 nodes.  
 > **Narration**:  
-> *"With one click, our stateful LangGraph agent triggers a 4-stage optimization cycle:  
-> 1. **Sensor Node**: Ingests FortyGuard heatmaps, environmental parameters, and street-view sky view factor.  
-> 2. **Analyst Node**: Evaluates regulatory non-compliance against OSHA outdoor heat stress and ASHRAE 55 standards.  
-> 3. **Synthesizer Node**: Solves for optimal bioclimatic geometry placement.  
-> 4. **Actuator Node**: Compiles precision 3D Element payloads ready for Autodesk Forma's Design API."*
+> *"FormaGuard executes an autonomous 4-stage LangGraph multi-agent loop:*  
+> *1. **Sensor Agent**: Ingests FortyGuard heatmaps, ambient parameters, satellite land-cover, and pedestrian sky view factor.*  
+> *2. **Thermal Deficit Analyst**: Detects a 44.8°C surface hotspot along the southern transit corridor and flags OSHA Heat Stress non-compliance.*  
+> *3. **Bioclimatic Synthesizer**: Formulates an optimal plan—adding 7 London Plane trees along the pedestrian walkway and 420m² of TiO₂ cool pavement.*  
+> *4. **Forma Actuator**: Synthesizes 8 parametric 3D elements ready for instant canvas injection."*
 
 ---
 
-### [2:05 - 2:40] Actuation & Impact: 3D Geometry Injected
-> **Action**: Click **`Commit 3D Geometry to Forma`**. Hover over the newly rendered London Plane trees and cool pavement on the 3D canvas. Show the **`Payload Inspector`** tab.  
+### [2:00 - 2:35] Live 3D Geometry Actuation into Forma
+> **Action**: Click **`Render Mitigation Geometry to Forma Canvas (8 Assets)`**. Orbit the 3D canvas to show the rendered 3D trees and blue cool pavement.  
 > **Narration**:  
-> *"Watch the canvas update: FormaGuard has autonomously placed 7 mature London Plane trees along the southern walking spine, deployed 420 square meters of high-albedo titanium dioxide pavement, and erected tensile shade pergolas.  
-> The result?  
-> - 4.2°C direct temperature drop.  
-> - Mean Radiant Temperature dropped by 8.6°C.  
-> - 18% reduction in building cooling energy.  
-> - And under the Regulatory Inspector, the site now qualifies for USDA Urban Forestry IRA Grants."*
+> *"With one click, using the official Autodesk Forma Embedded SDK, FormaGuard renders 7 mature London Plane trees and high-albedo cool pavement directly into our live 3D proposal.*  
+> *The measurable results:*  
+> *- A **4.2°C drop in ambient temperature** (down to 36°C).*  
+> *- An **8.6°C reduction in peak surface heat** (down from 44.8°C to 36.2°C).*  
+> *- Daily heat exceedance past 35°C reduced from **6.8 hours down to 1.4 hours/day**.*  
+> *- Full compliance with **OSHA Heat Stress guidelines** and pre-qualification for **$1.5B in USDA Urban Forestry Grants**."*
 
 ---
 
-### [2:40 - 3:00] Conclusion & Extension Integration
-> **Action**: Show [**`https://formaguard.pages.dev`**](https://formaguard.pages.dev).  
+### [2:35 - 3:00] Web Studio, Benchmarks & Closing
+> **Action**: Switch to the **FormaGuard Web Studio** ([`https://formaguard-studio.web.app`](https://formaguard-studio.web.app)). Click the **Forma Design API / Payload Inspector** to show raw JSON, and show the city dropdown (Dubai, NYC, Phoenix, London, Tokyo).  
 > **Narration**:  
-> *"Because FormaGuard is built as a cloud-native Autodesk Forma extension hosted on Cloudflare Pages and Google Cloud Run, it embeds directly inside Autodesk Forma with zero installation required.  
-> FormaGuard empowers architects to design cooler, more resilient cities from day one."*
+> *"In our standalone Web Studio, planners can inspect raw payloads across all 5 FortyGuard endpoints and benchmark across 10 global cities—from hyper-arid deserts in Dubai to urban canyons in Manhattan.*  
+> *Deployed across Cloudflare Pages, Firebase Hosting, and Google Cloud Run, FormaGuard brings autonomous microclimate intelligence to every urban designer from day one. Thank you!"*
 
 ---
 
